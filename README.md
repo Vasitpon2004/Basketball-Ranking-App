@@ -12,4 +12,5 @@ Full-stack web application for Basketball league management and ranking.
 - [PostgreSQL](https://www.postgresql.org/) (ติดตั้งในเครื่อง หรือใช้ Cloud Database)
 ---
 # Setup
-```git clone [https://github.com/Vasitpon2004/Basketball-Ranking-App.git](https://github.com/Vasitpon2004/Basketball-Ranking-App.git)
+```
+git clone [https://github.com/Vasitpon2004/Basketball-Ranking-App.git](https://github.com/Vasitpon2004/Basketball-Ranking-App.git)
