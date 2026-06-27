@@ -13,5 +13,5 @@ Full-stack web application for Basketball league management and ranking.
 ---
 # Setup
 ```
-git clone [[https://github.com/Vasitpon2004/Basketball-Ranking-App.git](https://github.com/Vasitpon2004/Basketball-Ranking-App.git)](https://github.com/Vasitpon2004/Basketball-Ranking-App.git)
+git clone https://github.com/Vasitpon2004/Basketball-Ranking-App.git
 cd Basketball-Ranking-App
