@@ -3,7 +3,7 @@ Full-stack web application for Basketball league management and ranking.
 ---
 # Stack
 - **Frontend:** React.js, Tailwind CSS
-- **Backend:** Node.js, Express.js
+- **Backend:** Node.js, Nest.js
 - **Database:** PostgreSQL
 ---
 # Prerequisites
