@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-export default function RegisterForm() {
+export default function RegisterForm({ onSwitchToLogin }) {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -12,11 +12,13 @@ export default function RegisterForm() {
     if (!validateForm()) {
       return;
     }
-    console.log(username);
-    console.log(email);
-    console.log(password);
-    console.log("Form submitted successfully!");
-    alert("Form submitted successfully!");
+    console.log("Username:", username);
+    console.log("Email:", email);
+    console.log("Password:", password);
+    alert("สมัครสมาชิกสำเร็จ!");
+    if (onSwitchToLogin) {
+      onSwitchToLogin();
+    }
   };
 
   const validateForm = () => {
@@ -50,15 +52,29 @@ export default function RegisterForm() {
   };
 
   return (
-    <div className="bg-[#151617] p-6 rounded-lg shadow-md text-white w-[440px] h-[500px]">
-      <div className="flex items-center mb-6 bg-[#25262b] p-3 rounded-3xl">
-        <button className="rounded-3xl border border-[#4b4c4f] flex-1 hover:text-white text-gray-500">Login</button>
-        <button className="rounded-3xl border border-[#4b4c4f] bg-[#e85d07] hover:bg-[#c75006] flex-1">Register</button>
+    <div className="bg-[#11141b] border border-[#232835] p-8 rounded-3xl shadow-2xl text-white w-[400px]">
+      {/* Tab Switcher */}
+      <div className="flex items-center mb-6 bg-[#181b24] p-1.5 rounded-2xl border border-[#232835]">
+        <button
+          type="button"
+          onClick={onSwitchToLogin}
+          className="flex-1 py-2.5 rounded-xl text-sm font-bold text-gray-400 hover:text-white transition-all duration-300 cursor-pointer"
+        >
+          เข้าสู่ระบบ
+        </button>
+        <button
+          type="button"
+          className="flex-1 py-2.5 rounded-xl text-sm font-bold bg-[#ff6600] text-[#090b0f] transition-all duration-300 cursor-pointer"
+        >
+          สมัครสมาชิก
+        </button>
       </div>
-      <form onSubmit={handleSubmit} className="flex flex-col gap-5">
-        <div>
-          <label htmlFor="username" className="block mb-2 text-sm font-medium">
-            Username
+
+      <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+        {/* Username Field */}
+        <div className="flex flex-col gap-1.5">
+          <label htmlFor="username" className="text-gray-400 text-sm font-medium">
+            ชื่อผู้ใช้งาน
           </label>
           <input
             id="username"
@@ -66,25 +82,29 @@ export default function RegisterForm() {
             placeholder="Username"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
-            className="w-full border border-[#4b4c4f] rounded-xl px-4 py-2 focus:outline-none focus:ring-1 focus:ring-orange-500 bg-[#25262b]"
+            className="w-full bg-[#181b24] border border-[#282e3c] rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-[#ff6600] focus:ring-1 focus:ring-[#ff6600] placeholder-gray-600 transition-all duration-200"
           />
         </div>
-        <div>
-          <label htmlFor="email" className="block mb-2 text-sm font-medium">
-            Email
+
+        {/* Email Field */}
+        <div className="flex flex-col gap-1.5">
+          <label htmlFor="email" className="text-gray-400 text-sm font-medium">
+            อีเมล
           </label>
           <input
             id="email"
             type="email"
-            placeholder="Email"
+            placeholder="your@email.com"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full border border-[#4b4c4f] rounded-xl px-4 py-2 focus:outline-none focus:ring-1 focus:ring-orange-500 bg-[#25262b]"
+            className="w-full bg-[#181b24] border border-[#282e3c] rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-[#ff6600] focus:ring-1 focus:ring-[#ff6600] placeholder-gray-600 transition-all duration-200"
           />
         </div>
-        <div>
-          <label htmlFor="password" className="block mb-2 text-sm font-medium">
-            Password
+
+        {/* Password Field */}
+        <div className="flex flex-col gap-1.5">
+          <label htmlFor="password" className="text-gray-400 text-sm font-medium">
+            รหัสผ่าน
           </label>
           <input
             id="password"
@@ -92,15 +112,17 @@ export default function RegisterForm() {
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="w-full border border-[#4b4c4f] rounded-xl px-4 py-2 focus:outline-none focus:ring-1 focus:ring-orange-500 bg-[#25262b]"
+            className="w-full bg-[#181b24] border border-[#282e3c] rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-[#ff6600] focus:ring-1 focus:ring-[#ff6600] placeholder-gray-600 transition-all duration-200"
           />
         </div>
-        <div>
+
+        {/* Confirm Password Field */}
+        <div className="flex flex-col gap-1.5">
           <label
             htmlFor="confirmPassword"
-            className="block mb-2 text-sm font-medium"
+            className="text-gray-400 text-sm font-medium"
           >
-            Confirm Password
+            ยืนยันรหัสผ่าน
           </label>
           <input
             id="confirmPassword"
@@ -108,15 +130,17 @@ export default function RegisterForm() {
             placeholder="Confirm Password"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
-            className="w-full border border-[#4b4c4f] rounded-xl px-4 py-2 focus:outline-none focus:ring-1 focus:ring-orange-500 bg-[#25262b]"
+            className="w-full bg-[#181b24] border border-[#282e3c] rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-[#ff6600] focus:ring-1 focus:ring-[#ff6600] placeholder-gray-600 transition-all duration-200"
           />
         </div>
+
+        {/* Submit Button */}
         <button
           id="register-button"
           type="submit"
-          className="gap-2 rounded-xl py-2 bg-[#e85d07] hover:bg-[#c75006]"
+          className="w-full py-3 rounded-xl bg-[#ff6600] text-[#090b0f] font-bold text-base hover:bg-[#e05a00] active:scale-[0.98] transition-all duration-200 mt-2 cursor-pointer"
         >
-          Register
+          สมัครสมาชิก
         </button>
       </form>
     </div>
