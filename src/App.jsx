@@ -1,15 +1,12 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
+import React from 'react';
+import { useAuth } from './context/AuthContext';
+import LoginPage from './features/auth/pages/loginPage';
+import DashboardPage from './features/dashboard/pages/DashboardPage';
 
 function App() {
-  return (
-    <>
-    <h1>Hello, Vite!</h1>
-    </>
-  )
+  const { currentUser } = useAuth();
+
+  return currentUser ? <DashboardPage /> : <LoginPage />;
 }
 
-export default App
+export default App;
