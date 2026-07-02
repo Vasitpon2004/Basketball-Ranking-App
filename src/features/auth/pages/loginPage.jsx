@@ -37,9 +37,11 @@ export default function LoginPage() {
       {/* Brand Header */}
       <div className="flex flex-col items-center mb-8 select-none">
         <BasketballIcon className="w-16 h-16 mb-4 animate-bounce-slow" />
-        <h1 className="text-[64px] font-extrabold text-white leading-none tracking-tight">BBL</h1>
-        <p className="text-gray-400 text-xs font-semibold tracking-[0.25em] mt-2 uppercase">
-          Bangkok Basketball League
+        <h1 className="text-[36px] md:text-[48px] font-extrabold text-white leading-none tracking-tight text-center">
+          Basketball Ranking
+        </h1>
+        <p className="text-gray-400 text-xs font-semibold tracking-[0.15em] mt-2 uppercase text-center">
+          Track player statistics & standings
         </p>
       </div>
 

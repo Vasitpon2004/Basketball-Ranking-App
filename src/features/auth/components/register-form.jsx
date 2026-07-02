@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import { useAuth } from "../../../context/AuthContext";
 
 export default function RegisterForm({ onSwitchToLogin }) {
+  const { register } = useAuth();
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -14,9 +16,7 @@ export default function RegisterForm({ onSwitchToLogin }) {
     if (!validateForm()) {
       return;
     }
-    console.log("Username:", username);
-    console.log("Email:", email);
-    console.log("Password:", password);
+    register(username, email, password);
     alert("สมัครสมาชิกสำเร็จ!");
     if (onSwitchToLogin) {
       onSwitchToLogin();

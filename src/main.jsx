@@ -1,10 +1,13 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './styles/index.css'
-import LoginPage from './features/auth/pages/loginPage'
+import { AuthProvider } from './context/AuthContext'
+import App from './App'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <LoginPage />
+    <AuthProvider>
+      <App />
+    </AuthProvider>
   </StrictMode>,
 )

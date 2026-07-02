@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import { useAuth } from "../../../context/AuthContext";
 
 export default function LoginForm({ onSwitchToRegister }) {
+  const { login } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -15,20 +17,28 @@ export default function LoginForm({ onSwitchToRegister }) {
       alert("กรุณากรอกรหัสผ่าน");
       return;
     }
-    alert(`เข้าสู่ระบบสำเร็จด้วยอีเมล: ${email}`);
+    const success = login(email, password);
+    if (!success) {
+      alert("อีเมลหรือรหัสผ่านไม่ถูกต้อง");
+    }
   };
 
   const handleDemoAccess = (role) => {
+    let demoEmail = "";
+    let demoPassword = "";
     if (role === "guest") {
-      setEmail("guest@bbl.com");
-      setPassword("GuestPass123!");
+      demoEmail = "guest@bbl.com";
+      demoPassword = "GuestPass123!";
     } else if (role === "player") {
-      setEmail("player@bbl.com");
-      setPassword("PlayerPass123!");
+      demoEmail = "player@bbl.com";
+      demoPassword = "PlayerPass123!";
     } else if (role === "admin") {
-      setEmail("admin@bbl.com");
-      setPassword("AdminPass123!");
+      demoEmail = "admin@bbl.com";
+      demoPassword = "AdminPass123!";
     }
+    setEmail(demoEmail);
+    setPassword(demoPassword);
+    login(demoEmail, demoPassword);
   };
 
   return (
